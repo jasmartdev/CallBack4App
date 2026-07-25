@@ -31,7 +31,7 @@ if __name__ == '__main__':
     health_thread.start()
     first_timestamp = time.time()
     while True:
-        time.sleep(60)
+        time.sleep(600)
         current_timestamp = time.time()
         if current_timestamp - first_timestamp > 600:
             response = requests.post(
