@@ -29,7 +29,7 @@ def run_health_check_server():
 if __name__ == '__main__':
     health_thread = threading.Thread(target=run_health_check_server, daemon=True)
     health_thread.start()
-    time.sleep(2100)
+    time.sleep(600)
     response = requests.post(
     url=back4ap_url, 
     headers=back4ap_headers, 
