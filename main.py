@@ -29,7 +29,9 @@ def run_health_check_server():
 if __name__ == '__main__':
     health_thread = threading.Thread(target=run_health_check_server, daemon=True)
     health_thread.start()
+    first_timestamp = time.time()
     while True:
+        time.sleep(600)
         response = requests.post(
         url=back4ap_url, 
         headers=back4ap_headers, 
@@ -38,4 +40,5 @@ if __name__ == '__main__':
         )
         data = response.json()
         if data.get('data') and data.get('data').get('triggerManualDeployment') and data.get('data').get('triggerManualDeployment').get('status') == 'DOING':
-            break
+            first_timestamp = time.time()
+            time.sleep(3000)
