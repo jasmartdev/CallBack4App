@@ -31,9 +31,9 @@ if __name__ == '__main__':
     health_thread.start()
     first_timestamp = time.time()
     while True:
-        time.sleep(60)
+        time.sleep(120)
         current_timestamp = time.time()
-        if current_timestamp - first_timestamp > 600:
+        if current_timestamp - first_timestamp > 300:
             response = requests.post(
             url=back4ap_url, 
             headers=back4ap_headers, 
@@ -43,4 +43,4 @@ if __name__ == '__main__':
             data = response.json()
             if data.get('data') and data.get('data').get('triggerManualDeployment') and data.get('data').get('triggerManualDeployment').get('status') == 'DOING':
                 first_timestamp = time.time()
-                time.sleep(3000)
+                time.sleep(1850)
